@@ -1,0 +1,976 @@
+[
+    {
+        "id": "111a138f7cf14747",
+        "type": "tab",
+        "label": "MQTT GELADEIRA",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "70d072853872b1f3",
+        "type": "mqtt in",
+        "z": "111a138f7cf14747",
+        "name": "",
+        "topic": "geladeira01/estado",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "fd25248ab0f7fd80",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 400,
+        "wires": [
+            [
+                "0e6ba4111571817f"
+            ]
+        ]
+    },
+    {
+        "id": "524f584ce2ad86e6",
+        "type": "mqtt in",
+        "z": "111a138f7cf14747",
+        "name": "",
+        "topic": "geladeira01/tempsom",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "fd25248ab0f7fd80",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 480,
+        "wires": [
+            [
+                "a1ea91fb5beb0c2d",
+                "8ab8889e8d8b5ca0"
+            ]
+        ]
+    },
+    {
+        "id": "fd187c7b0fa499c0",
+        "type": "mqtt in",
+        "z": "111a138f7cf14747",
+        "name": "",
+        "topic": "geladeira01/tempp",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "fd25248ab0f7fd80",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 560,
+        "wires": [
+            [
+                "597ed8dcdfdb630b",
+                "42a70cf15bbda589"
+            ]
+        ]
+    },
+    {
+        "id": "0e6ba4111571817f",
+        "type": "ui_text",
+        "z": "111a138f7cf14747",
+        "group": "85c089b6f1627061",
+        "order": 15,
+        "width": 7,
+        "height": 1,
+        "name": "",
+        "label": "Estado da geladeira:",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 460,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "597ed8dcdfdb630b",
+        "type": "ui_chart",
+        "z": "111a138f7cf14747",
+        "name": "Temperatura perdida (°C)",
+        "group": "85c089b6f1627061",
+        "order": 7,
+        "width": 7,
+        "height": 5,
+        "label": "Temperatura perdida (°C):",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "-2",
+        "ymax": "2",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 470,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a1ea91fb5beb0c2d",
+        "type": "ui_text",
+        "z": "111a138f7cf14747",
+        "group": "85c089b6f1627061",
+        "order": 13,
+        "width": 7,
+        "height": 1,
+        "name": "",
+        "label": "Média da temperatura perdida (°C):",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 520,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "8ab8889e8d8b5ca0",
+        "type": "debug",
+        "z": "111a138f7cf14747",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 460,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "42a70cf15bbda589",
+        "type": "debug",
+        "z": "111a138f7cf14747",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 460,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "ef7c96080f3d37a5",
+        "type": "ui_button",
+        "z": "111a138f7cf14747",
+        "name": "",
+        "group": "85c089b6f1627061",
+        "order": 17,
+        "width": 4,
+        "height": 1,
+        "passthru": false,
+        "label": "Limpar gráficos e médias",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "[]",
+        "payloadType": "json",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 190,
+        "y": 680,
+        "wires": [
+            [
+                "597ed8dcdfdb630b",
+                "341d86b277d3f271",
+                "d5a231a0b675f58f"
+            ]
+        ]
+    },
+    {
+        "id": "341d86b277d3f271",
+        "type": "change",
+        "z": "111a138f7cf14747",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 680,
+        "wires": [
+            [
+                "a1ea91fb5beb0c2d"
+            ]
+        ]
+    },
+    {
+        "id": "59514866c6617cbc",
+        "type": "mqtt in",
+        "z": "111a138f7cf14747",
+        "name": "",
+        "topic": "geladeira01/tempgel",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "fd25248ab0f7fd80",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 170,
+        "y": 740,
+        "wires": [
+            [
+                "d5a231a0b675f58f"
+            ]
+        ]
+    },
+    {
+        "id": "d5a231a0b675f58f",
+        "type": "ui_chart",
+        "z": "111a138f7cf14747",
+        "name": "",
+        "group": "85c089b6f1627061",
+        "order": 1,
+        "width": 7,
+        "height": 5,
+        "label": "Temperatura da geladeira (ºC):",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 510,
+        "y": 740,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "70d056524f2a4e14",
+        "type": "mqtt in",
+        "z": "111a138f7cf14747",
+        "name": "",
+        "topic": "geladeira02/estado",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "fd25248ab0f7fd80",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 940,
+        "wires": [
+            [
+                "12134e3666c3cd52"
+            ]
+        ]
+    },
+    {
+        "id": "2975e414d7588080",
+        "type": "mqtt in",
+        "z": "111a138f7cf14747",
+        "name": "",
+        "topic": "geladeira02/tempsom",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "fd25248ab0f7fd80",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 1020,
+        "wires": [
+            [
+                "67106d8f1526d092",
+                "7ecbe562c4264ad0"
+            ]
+        ]
+    },
+    {
+        "id": "5aa1f9d1d1d0dc7e",
+        "type": "mqtt in",
+        "z": "111a138f7cf14747",
+        "name": "",
+        "topic": "geladeira02/tempp",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "fd25248ab0f7fd80",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 1100,
+        "wires": [
+            [
+                "a2d2f72243cea2cb",
+                "cb147d233c94d618"
+            ]
+        ]
+    },
+    {
+        "id": "12134e3666c3cd52",
+        "type": "ui_text",
+        "z": "111a138f7cf14747",
+        "group": "76d35e3982a037d1",
+        "order": 15,
+        "width": 7,
+        "height": 1,
+        "name": "",
+        "label": "Estado da geladeira:",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 460,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "a2d2f72243cea2cb",
+        "type": "ui_chart",
+        "z": "111a138f7cf14747",
+        "name": "Temperatura perdida (°C)",
+        "group": "76d35e3982a037d1",
+        "order": 7,
+        "width": 7,
+        "height": 5,
+        "label": "Temperatura perdida (°C):",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "-2",
+        "ymax": "2",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 470,
+        "y": 1100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "67106d8f1526d092",
+        "type": "ui_text",
+        "z": "111a138f7cf14747",
+        "group": "76d35e3982a037d1",
+        "order": 13,
+        "width": 7,
+        "height": 1,
+        "name": "",
+        "label": "Média da temperatura perdida (°C):",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 520,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "7ecbe562c4264ad0",
+        "type": "debug",
+        "z": "111a138f7cf14747",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 460,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "cb147d233c94d618",
+        "type": "debug",
+        "z": "111a138f7cf14747",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 460,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "75bb5fc873448d8a",
+        "type": "ui_button",
+        "z": "111a138f7cf14747",
+        "name": "",
+        "group": "76d35e3982a037d1",
+        "order": 17,
+        "width": 4,
+        "height": 1,
+        "passthru": false,
+        "label": "Limpar gráficos e médias",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "[]",
+        "payloadType": "json",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 190,
+        "y": 1220,
+        "wires": [
+            [
+                "a2d2f72243cea2cb",
+                "6f9d944e3a48b426",
+                "1ae3bbc2bc0a7ee5"
+            ]
+        ]
+    },
+    {
+        "id": "6f9d944e3a48b426",
+        "type": "change",
+        "z": "111a138f7cf14747",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 1220,
+        "wires": [
+            [
+                "67106d8f1526d092"
+            ]
+        ]
+    },
+    {
+        "id": "17a9a8f23e4f5fbe",
+        "type": "mqtt in",
+        "z": "111a138f7cf14747",
+        "name": "",
+        "topic": "geladeira02/tempgel",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "fd25248ab0f7fd80",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 170,
+        "y": 1280,
+        "wires": [
+            [
+                "1ae3bbc2bc0a7ee5"
+            ]
+        ]
+    },
+    {
+        "id": "1ae3bbc2bc0a7ee5",
+        "type": "ui_chart",
+        "z": "111a138f7cf14747",
+        "name": "",
+        "group": "76d35e3982a037d1",
+        "order": 1,
+        "width": 7,
+        "height": 5,
+        "label": "Temperatura da geladeira (ºC):",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 510,
+        "y": 1280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b48a674537b5f24e",
+        "type": "remote-access",
+        "z": "111a138f7cf14747",
+        "confignode": "8000316e759f9099",
+        "name": "",
+        "verbose": 0,
+        "x": 800,
+        "y": 860,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8cd9bd2d1bd88bfd",
+        "type": "comment",
+        "z": "111a138f7cf14747",
+        "name": "GELADEIRA 1",
+        "info": "Damos subscribe em cada um dos tópicos,\nsendo que cada um deles representa uma \ninformação.\n\nEntão, enviamos os payloads para seus devidos\nelementos do dashboard.\n\nO botão de limpar gráficos e médias envia para\nos gráficos uma string \"[]\", o que limpa os gráficos.\nPara limpar os elementos de texto da média, passamos\na informação por um bloco de \"change\", que altera\nde uma string \"[]\" para \"0\".",
+        "x": 140,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "10a5f68efc90a82d",
+        "type": "comment",
+        "z": "111a138f7cf14747",
+        "name": "GELADEIRA 2",
+        "info": "O funcionamento é exatamente igual à geladeira 1,\na única diferença é que os tópicos são diferentes,\nsendo \"geladeira02/xxxx\", ao invés de \"geladeira01/xxxx\".",
+        "x": 140,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "b8552a3bab931ea2",
+        "type": "comment",
+        "z": "111a138f7cf14747",
+        "name": "RED-Connect",
+        "info": "Nó do RED-Connect, que transmite o dashboard \npara um dispositivo móvel que tenha o aplicativo\ninstalado após ambos terem se conectado por meio \nde um QR Code.",
+        "x": 790,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "1812d3e25c4c7f38",
+        "type": "ui_spacer",
+        "z": "111a138f7cf14747",
+        "name": "spacer",
+        "group": "85c089b6f1627061",
+        "order": 2,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "c0f2d6603bb81a92",
+        "type": "ui_spacer",
+        "z": "111a138f7cf14747",
+        "name": "spacer",
+        "group": "85c089b6f1627061",
+        "order": 3,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "83674384347dceb8",
+        "type": "ui_spacer",
+        "z": "111a138f7cf14747",
+        "name": "spacer",
+        "group": "85c089b6f1627061",
+        "order": 4,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "2492838dd601e43d",
+        "type": "ui_spacer",
+        "z": "111a138f7cf14747",
+        "name": "spacer",
+        "group": "85c089b6f1627061",
+        "order": 5,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "e2f1d525622f0e22",
+        "type": "ui_spacer",
+        "z": "111a138f7cf14747",
+        "name": "spacer",
+        "group": "85c089b6f1627061",
+        "order": 6,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "e3d16f53f291ea02",
+        "type": "ui_spacer",
+        "z": "111a138f7cf14747",
+        "name": "spacer",
+        "group": "85c089b6f1627061",
+        "order": 8,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "07d877f730ad3955",
+        "type": "ui_spacer",
+        "z": "111a138f7cf14747",
+        "name": "spacer",
+        "group": "85c089b6f1627061",
+        "order": 9,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "d96596ee9e8452bb",
+        "type": "ui_spacer",
+        "z": "111a138f7cf14747",
+        "name": "spacer",
+        "group": "85c089b6f1627061",
+        "order": 10,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "9b26d565f083023b",
+        "type": "ui_spacer",
+        "z": "111a138f7cf14747",
+        "name": "spacer",
+        "group": "85c089b6f1627061",
+        "order": 11,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "a5dfc44d4042511f",
+        "type": "ui_spacer",
+        "z": "111a138f7cf14747",
+        "name": "spacer",
+        "group": "85c089b6f1627061",
+        "order": 12,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "7bc0a6f956a52459",
+        "type": "ui_spacer",
+        "z": "111a138f7cf14747",
+        "name": "spacer",
+        "group": "85c089b6f1627061",
+        "order": 14,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "06469841eb7a9fd4",
+        "type": "ui_spacer",
+        "z": "111a138f7cf14747",
+        "name": "spacer",
+        "group": "85c089b6f1627061",
+        "order": 16,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "92a4b6fd02398f64",
+        "type": "ui_spacer",
+        "z": "111a138f7cf14747",
+        "name": "spacer",
+        "group": "85c089b6f1627061",
+        "order": 18,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "5a583f3f44b52f7c",
+        "type": "ui_spacer",
+        "z": "111a138f7cf14747",
+        "name": "spacer",
+        "group": "76d35e3982a037d1",
+        "order": 2,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "47dd12f83dad3f48",
+        "type": "ui_spacer",
+        "z": "111a138f7cf14747",
+        "name": "spacer",
+        "group": "76d35e3982a037d1",
+        "order": 3,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "f830f7710f566aab",
+        "type": "ui_spacer",
+        "z": "111a138f7cf14747",
+        "name": "spacer",
+        "group": "76d35e3982a037d1",
+        "order": 4,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "b73a181698257182",
+        "type": "ui_spacer",
+        "z": "111a138f7cf14747",
+        "name": "spacer",
+        "group": "76d35e3982a037d1",
+        "order": 5,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "b7ecaf27a1f5a480",
+        "type": "ui_spacer",
+        "z": "111a138f7cf14747",
+        "name": "spacer",
+        "group": "76d35e3982a037d1",
+        "order": 6,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "8b55656cc0db892f",
+        "type": "ui_spacer",
+        "z": "111a138f7cf14747",
+        "name": "spacer",
+        "group": "76d35e3982a037d1",
+        "order": 8,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "932db81f5d2c9855",
+        "type": "ui_spacer",
+        "z": "111a138f7cf14747",
+        "name": "spacer",
+        "group": "76d35e3982a037d1",
+        "order": 9,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "4abd8f846a519694",
+        "type": "ui_spacer",
+        "z": "111a138f7cf14747",
+        "name": "spacer",
+        "group": "76d35e3982a037d1",
+        "order": 10,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "998a4e6087c97bbf",
+        "type": "ui_spacer",
+        "z": "111a138f7cf14747",
+        "name": "spacer",
+        "group": "76d35e3982a037d1",
+        "order": 11,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "9b6bf078454079ec",
+        "type": "ui_spacer",
+        "z": "111a138f7cf14747",
+        "name": "spacer",
+        "group": "76d35e3982a037d1",
+        "order": 12,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "a292f1f19801a1b4",
+        "type": "ui_spacer",
+        "z": "111a138f7cf14747",
+        "name": "spacer",
+        "group": "76d35e3982a037d1",
+        "order": 14,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "32be13c9bba9872d",
+        "type": "ui_spacer",
+        "z": "111a138f7cf14747",
+        "name": "spacer",
+        "group": "76d35e3982a037d1",
+        "order": 16,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "5db2f9e9ead2e6b2",
+        "type": "ui_spacer",
+        "z": "111a138f7cf14747",
+        "name": "spacer",
+        "group": "76d35e3982a037d1",
+        "order": 18,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "fd25248ab0f7fd80",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.emqx.io",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "85c089b6f1627061",
+        "type": "ui_group",
+        "name": "Geladeira 1",
+        "tab": "17d09b07.741a55",
+        "order": 2,
+        "disp": true,
+        "width": "10",
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "76d35e3982a037d1",
+        "type": "ui_group",
+        "name": "Geladeira 2",
+        "tab": "17d09b07.741a55",
+        "order": 3,
+        "disp": true,
+        "width": "10",
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "8000316e759f9099",
+        "type": "remote-config",
+        "name": "Node-RED UI",
+        "host": "localhost",
+        "protocol": "http",
+        "port": "1880",
+        "baseurl": "/ui",
+        "instancehash": "v9o3iyexl81optliw28uuu0syqabw25erwibeeebxt5lsqjbmn87vmyb3f2kxr3p",
+        "server": "nodered03.remote-red.com",
+        "region": "us"
+    },
+    {
+        "id": "17d09b07.741a55",
+        "type": "ui_tab",
+        "name": "Monitoramento de geladeiras",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
